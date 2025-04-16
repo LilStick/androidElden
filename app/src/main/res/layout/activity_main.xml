@@ -1,0 +1,49 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/heroName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nom du héros" />
+
+        <EditText
+            android:id="@+id/origin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Origine (ex: Lothric, Carthus)" />
+
+        <EditText
+            android:id="@+id/weapon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Arme préférée (ex: épée, hallebarde)" />
+
+        <EditText
+            android:id="@+id/enemy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Ennemi juré (ex: Malenia, Radan...)" />
+
+        <Button
+            android:id="@+id/generateButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Générer l'histoire" />
+
+        <TextView
+            android:id="@+id/storyOutput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="16dp"
+            android:textSize="16sp"
+            android:text="" />
+    </LinearLayout>
+</ScrollView>
