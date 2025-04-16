@@ -2,4 +2,8 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="darkDefault">#333333</color>
+    <color name="darkPressed">#555555</color>
+
+
 </resources>

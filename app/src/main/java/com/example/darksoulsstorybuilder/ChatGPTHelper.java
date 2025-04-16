@@ -9,7 +9,7 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 
-public class callChatGPT {
+public class ChatGPTHelper {
 
     public static void callChatGPT(Activity activity, String prompt, TextView storyOutput) {
         OkHttpClient client = new OkHttpClient();
@@ -55,7 +55,13 @@ public class callChatGPT {
                                 .getJSONObject("message")
                                 .getString("content");
 
-                        activity.runOnUiThread(() -> storyOutput.setText(reply));
+                        activity.runOnUiThread(() -> {
+                            if (activity instanceof StoryActivity) {
+                                ((StoryActivity) activity).animateText(reply); // Animation RPG
+                            } else {
+                                storyOutput.setText(reply); // fallback
+                            }
+                        });
                     } catch (Exception e) {
                         activity.runOnUiThread(() -> storyOutput.setText("Erreur JSON"));
                     }
@@ -63,6 +69,7 @@ public class callChatGPT {
                     activity.runOnUiThread(() -> storyOutput.setText("Réponse invalide de l'API"));
                 }
             }
+
         });
     }
 }

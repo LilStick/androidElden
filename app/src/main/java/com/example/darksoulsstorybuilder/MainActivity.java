@@ -1,17 +1,16 @@
 package com.example.darksoulsstorybuilder;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
     EditText heroName, origin, weapon, enemy;
     Button generateButton;
-    TextView storyOutput;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +22,6 @@ public class MainActivity extends AppCompatActivity {
         weapon = findViewById(R.id.weapon);
         enemy = findViewById(R.id.enemy);
         generateButton = findViewById(R.id.generateButton);
-        storyOutput = findViewById(R.id.storyOutput);
 
         generateButton.setOnClickListener(v -> {
             String prompt = buildPrompt(
@@ -33,8 +31,10 @@ public class MainActivity extends AppCompatActivity {
                     enemy.getText().toString()
             );
 
-            storyOutput.setText("Création de l'histoire en cours...");
-            callChatGPT.callChatGPT(MainActivity.this, prompt, storyOutput);
+            // Pass the prompt to the next activity
+            Intent intent = new Intent(MainActivity.this, StoryActivity.class);
+            intent.putExtra("prompt", prompt);
+            startActivity(intent);
         });
     }
 
